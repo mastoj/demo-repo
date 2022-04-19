@@ -3,6 +3,7 @@ export interface AzureConfig {
     clientSecret: string;
     resourceGroupName: string;
     subscriptionId: string;
+    tenantId: string;
 }
 
 export const readActionSecret = (): AzureConfig => {
