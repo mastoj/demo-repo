@@ -10,9 +10,9 @@ jobs:
       - name: core
         run: |
           make deploy-core
-      # - name: infra
-      #   run: |
-      #     make deploy-infra
+      - name: infra
+        run: |
+          make deploy-infra
     env:
       PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
       ACTION_SECRET: ${{ secrets.RG_DEMO_RG }}
