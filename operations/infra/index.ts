@@ -1,16 +1,16 @@
 import * as pulumi from "@pulumi/pulumi";
-import * as resources from "@pulumi/azure-native/resources";
 import * as storage from "@pulumi/azure-native/storage";
 import * as azure from "@pulumi/azure-native";
 import { AzureConfig } from "../common/azureProvider";
 
 const coreStackReference = new pulumi.StackReference("tomasja/demo-repo.core/dev");
-const azureConfig = coreStackReference.requireOutput("azureConfig").apply(secret => {console.log("Secret: ", secret); return  secret as AzureConfig;});
+const azureConfig = coreStackReference.requireOutput("azureConfig").apply(secret => secret as AzureConfig);
 
 const azureProvider = new azure.Provider("azureProvider", {
     clientId: azureConfig.clientId,
     clientSecret: azureConfig.clientSecret,
     subscriptionId: azureConfig.subscriptionId,
+    tenantId: azureConfig.tenantId,
 });
 
 // Create an Azure resource (Storage Account)
