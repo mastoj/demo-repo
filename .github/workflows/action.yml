@@ -1,0 +1,18 @@
+name: Action
+on: [push, workflow_dispatch]
+  
+jobs:
+  demo:
+    name: Deploy dev
+    runs-on: ubuntu-latest
+    steps:
+      - name: core
+        run: |
+          make deploy-core
+      # - name: infra
+      #   run: |
+      #     make deploy-infra
+    env:
+      PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
+      ACTION_SECRET: ${{ secrets.RG_DEMO_RG }}
+      GITHUB_TOKEN: ${{ secrets.AUTOMATION_GITHUB_TOKEN }}
