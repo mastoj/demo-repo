@@ -9,7 +9,6 @@ jobs:
       - uses: actions/checkout@v2
       - name: core
         run: |
-          cat Makefile
           make deploy-core
       # - name: infra
       #   run: |
