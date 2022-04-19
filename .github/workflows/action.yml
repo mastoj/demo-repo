@@ -6,6 +6,7 @@ jobs:
     name: Deploy dev
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - name: core
         run: |
           cat Makefile
