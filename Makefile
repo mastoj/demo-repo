@@ -11,7 +11,7 @@ install: ## Install
 	cd operations && npm install
 
 deploy-core: install ## Deploy core
-	pulumi up -C operations/core
+	pulumi up -C operations/core -y -s dev
 
 deploy-infra: install ## Deploy infra
-	pulumi up -C operations/infra
+	pulumi up -C operations/infra -y -s dev
