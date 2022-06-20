@@ -24,5 +24,6 @@ const storageAccount = new storage.StorageAccount("sa", {
 
 // Export the primary key of the Storage Account
 const storageAccountKeys = pulumi.all([azureConfig.resourceGroupName, storageAccount.name]).apply(([resourceGroupName, accountName]) =>
-    storage.listStorageAccountKeys({ resourceGroupName, accountName }));
+    storage.listStorageAccountKeys({ resourceGroupName, accountName }, { provider: azureProvider }));
+
 export const primaryStorageKey = storageAccountKeys.keys[0].value;
